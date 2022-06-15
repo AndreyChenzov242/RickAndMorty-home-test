@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/rickandmorty-home-test/static/css/main.125c416e.css",
-    "main.js": "/rickandmorty-home-test/static/js/main.a28bf710.js",
-    "static/media/blank-profil.png": "/rickandmorty-home-test/static/media/blank-profil.2fda6558cd58b877e14f.png",
-    "index.html": "/rickandmorty-home-test/index.html",
-    "main.125c416e.css.map": "/rickandmorty-home-test/static/css/main.125c416e.css.map",
-    "main.a28bf710.js.map": "/rickandmorty-home-test/static/js/main.a28bf710.js.map"
+    "main.css": "/RickAndMorty-home-test/static/css/main.125c416e.css",
+    "main.js": "/RickAndMorty-home-test/static/js/main.c884cc4f.js",
+    "static/media/blank-profil.png": "/RickAndMorty-home-test/static/media/blank-profil.2fda6558cd58b877e14f.png",
+    "index.html": "/RickAndMorty-home-test/index.html",
+    "main.125c416e.css.map": "/RickAndMorty-home-test/static/css/main.125c416e.css.map",
+    "main.c884cc4f.js.map": "/RickAndMorty-home-test/static/js/main.c884cc4f.js.map"
   },
   "entrypoints": [
     "static/css/main.125c416e.css",
-    "static/js/main.a28bf710.js"
+    "static/js/main.c884cc4f.js"
   ]
 }
