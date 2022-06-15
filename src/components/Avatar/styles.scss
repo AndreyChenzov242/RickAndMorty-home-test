@@ -1,0 +1,33 @@
+.image {
+  &-wrapper {
+    position: relative;
+  }
+
+  &__remove-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.upload-btn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  opacity: 0;
+  background-color: rgba(204, 204, 204, 0.69);
+  border-radius: 50%;
+  transition: opacity 0.2s ease-in;
+  font-weight: bold;
+  font-size: 16px;
+  color: #212121;
+
+  &:hover {
+    opacity: 1;
+  }
+}
