@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ImageUploading from "react-images-uploading";
-import { default as MuaAvatar } from "@mui/material/Avatar";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
-
-import "./styles.scss";
+import { default as MuaAvatar } from "@mui/material/Avatar";
 import { localStoreController } from "../../utils/localStoreController";
+import "./styles.scss";
 
 function Avatar(props) {
   const { src, name, id, status } = props;

@@ -51,10 +51,6 @@ body {
   }
 }
 
-[tabindex="-1"]:focus:not(:focus-visible) {
-  // outline: 0 !important;
-}
-
 h1,
 h2,
 h3,
@@ -85,11 +81,6 @@ button {
   border-radius: 0;
   background: transparent;
   border: 0;
-
-  &:active,
-  &:focus {
-    // outline: none !important;
-  }
 }
 
 button,
@@ -122,12 +113,7 @@ textarea {
   font-family: inherit;
   line-height: inherit;
   font-size: inherit;
-  // outline: none;
   margin: 0;
-
-  &:focus {
-    // outline: none;
-  }
 }
 
 button,
@@ -147,12 +133,6 @@ select {
 
 select {
   word-wrap: normal;
-}
-
-input,
-textarea,
-select {
-  // outline: none !important;
 }
 
 input[type="text"] {

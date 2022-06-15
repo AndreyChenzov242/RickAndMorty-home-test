@@ -5,43 +5,33 @@ export const localStoreController = {
     if (this.getCharacter()) {
       if (this.getCharacter(name)) {
         const characters = this.getCharacter();
+
         characters.forEach((element) => {
-          element.name === name
-            ? (element.isLiked = isLiked)
-            : (element.isLiked = element.isLiked);
+          if (element.name === name) {
+            element.isLiked = isLiked;
+            element.isDisliked = isDisliked;
+            element.image = image || "";
+          }
         });
-        characters.forEach((element) => {
-          element.name === name
-            ? (element.isDisliked = isDisliked)
-            : (element.isDisliked = element.isDisliked);
-        });
-        characters.forEach((element) => {
-          element.name === name
-            ? (element.image = image || "")
-            : (element.image = element.image);
-        });
-        localStorage.setItem("characters", JSON.stringify(characters));
+
+        this.setCharacter(characters);
         return;
       }
 
-      localStorage.setItem(
-        "characters",
-        JSON.stringify([
-          ...this.getCharacter(),
-          {
-            id: id,
-            name: name,
-            status: status,
-            isLiked: isLiked,
-            isDisliked: isDisliked,
-          },
-        ])
-      );
-
+      this.setCharacter([
+        ...this.getCharacter(),
+        {
+          id: id,
+          name: name,
+          status: status,
+          isLiked: isLiked,
+          isDisliked: isDisliked,
+        },
+      ]);
       return;
     }
 
-    localStorage.setItem("characters", JSON.stringify(new Array(character)));
+    this.setCharacter(new Array(character));
   },
 
   getCharacter(name) {
@@ -66,5 +56,9 @@ export const localStoreController = {
       return;
     }
     return characters[index];
+  },
+
+  setCharacter(character) {
+    localStorage.setItem("characters", JSON.stringify(character));
   },
 };

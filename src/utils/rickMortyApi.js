@@ -19,8 +19,10 @@ export const rickMortyApi = {
     return json;
   },
 
-  async getСharactersFromPage(urlWithPage) {
-    const response = await fetch(urlWithPage, { method: "GET" }).then((res) => {
+  async getСharactersFromPage(page) {
+    const response = await fetch(allCharactersUrl + "/?page=" + page, {
+      method: "GET",
+    }).then((res) => {
       if (res.status >= 200 && res.status < 300) {
         return res;
       } else {

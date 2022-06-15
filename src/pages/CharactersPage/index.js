@@ -1,12 +1,11 @@
-import { Box } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import Modal from "../../components/Modal";
+import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
-
-import { rickMortyApi } from "../../utils/rickMortyApi";
-import CharactersTable from "./CharactersTable/";
+import Typography from "@mui/material/Typography";
 import SearchBar from "./SearchBar";
-import "./styles.scss";
+import Modal from "../../components/Modal";
+import CharactersTable from "./CharactersTable/";
+import { rickMortyApi } from "../../utils/rickMortyApi";
 import { localStoreController } from "../../utils/localStoreController";
 
 function CharactersPage() {
@@ -36,22 +35,18 @@ function CharactersPage() {
     setLickedCharacters(lickedCharacter);
   }, []);
 
-  const loadPage = (page) => {
-    rickMortyApi
-      .getСharactersFromPage(
-        `https://rickandmortyapi.com/api/character/?page=${page}`
-      )
-      .then((json) => {
-        setInfo(json.info);
-        setCharacters(json.results);
-      });
-  };
-
   useEffect(() => {
     if (characters) {
       setIsLoading(false);
     }
   }, [characters]);
+
+  const loadPage = (page) => {
+    rickMortyApi.getСharactersFromPage(page).then((json) => {
+      setInfo(json.info);
+      setCharacters(json.results);
+    });
+  };
 
   const handleClose = () => setOpenModal(false);
 
@@ -62,7 +57,10 @@ function CharactersPage() {
   }
 
   return (
-    <div className="table-container">
+    <Box maxWidth={600} margin="0 auto">
+      <Typography variant="h1" fontSize={32} mt={2} mb={1} textAlign="center">
+        Rick and Morty API
+      </Typography>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <SearchBar />
         <Button size="small" onClick={handleOpen} sx={{ marginLeft: "auto" }}>
@@ -77,13 +75,12 @@ function CharactersPage() {
           listItemsSubtitle={"Status"}
         />
       </Box>
-
       <CharactersTable
         characters={characters}
         totalCount={info.count}
         loadPage={loadPage}
       />
-    </div>
+    </Box>
   );
 }
 

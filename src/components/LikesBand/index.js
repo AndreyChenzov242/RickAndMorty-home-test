@@ -15,7 +15,6 @@ function LikedBand(props) {
   const [isDisliked, setIsDisliked] = useState(
     localStoreController.getCharacter(name)?.isDisliked || false
   );
-
   const [isClicked, setIsClicked] = useState(false);
 
   const onLikeClickHandler = () => {

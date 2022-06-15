@@ -1,32 +1,17 @@
 import React, { useState, useEffect } from "react";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
-import IconButton from "@mui/material/IconButton";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useNavigate } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
+import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { rickMortyApi } from "../../../utils/rickMortyApi";
-import "./styles.scss";
 
 function SearchBar() {
   const [options, setOptions] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
-  const adaptCharacters = (characters) => {
-    let unicleCharacters = [];
-
-    characters.map((character) => {
-      if (
-        unicleCharacters.filter((e) => e.label === character.name).length === 0
-      ) {
-        unicleCharacters.push({ label: character.name, id: character.id });
-      }
-    });
-
-    setOptions(unicleCharacters.slice(0, 10));
-  };
 
   useEffect(() => {
     if (inputValue !== "") {
@@ -53,6 +38,20 @@ function SearchBar() {
     }
   }, [options]);
 
+  const adaptCharacters = (characters) => {
+    let unicleCharacters = [];
+
+    characters.map((character) => {
+      if (
+        unicleCharacters.filter((e) => e.label === character.name).length === 0
+      ) {
+        unicleCharacters.push({ label: character.name, id: character.id });
+      }
+    });
+
+    setOptions(unicleCharacters.slice(0, 10));
+  };
+
   const followCharacter = (id) => {
     navigate(`/character/${id}`);
   };
@@ -63,11 +62,9 @@ function SearchBar() {
 
   return (
     <Autocomplete
-      className={"search-bar"}
       disablePortal
-      id="combo-box-demo"
       options={options}
-      sx={{ width: 300 }}
+      sx={{ width: 300, margin: "12px 0" }}
       inputValue={inputValue}
       onInputChange={(event, newInputValue) => {
         inputChangeHandler(event, newInputValue);
@@ -92,11 +89,7 @@ function SearchBar() {
       renderOption={(props, option) => (
         <li {...props} onClick={() => followCharacter(option.id)}>
           {option.label}
-          <IconButton
-            aria-label="delete"
-            size="small"
-            sx={{ marginLeft: "auto" }}
-          >
+          <IconButton size="small" sx={{ marginLeft: "auto" }}>
             <ArrowForwardIosIcon fontSize="inherit" />
           </IconButton>
         </li>

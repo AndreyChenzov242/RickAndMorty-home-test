@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { rickMortyApi } from "../../utils/rickMortyApi";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
 import CharacterCard from "./CharacterCard";
+import { rickMortyApi } from "../../utils/rickMortyApi";
 
 function CharacterCardPage() {
   const navigate = useNavigate();
@@ -31,7 +34,28 @@ function CharacterCardPage() {
     return <div>Loading...</div>;
   }
 
-  return <CharacterCard character={character} />;
+  const onClickBreadcrumbsHandler = (event) => {
+    event.preventDefault();
+    navigate("/");
+  };
+
+  return (
+    <>
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link
+          sx={{ cursor: "pointer" }}
+          underline="hover"
+          color="inherit"
+          to="/"
+          onClick={onClickBreadcrumbsHandler}
+        >
+          Home
+        </Link>
+        <Typography color="text.primary">Character</Typography>
+      </Breadcrumbs>
+      <CharacterCard character={character} />
+    </>
+  );
 }
 
 export default CharacterCardPage;
