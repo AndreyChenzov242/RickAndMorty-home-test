@@ -57,8 +57,8 @@ function CharactersPage() {
   }
 
   return (
-    <Box maxWidth={600} margin="0 auto">
-      <Typography variant="h1" fontSize={32} mt={2} mb={1} textAlign="center">
+    <Box maxWidth={600} margin="0 auto" paddingTop={2}>
+      <Typography variant="h1" fontSize={32} mb={1} textAlign="center">
         Rick and Morty API
       </Typography>
       <Box sx={{ display: "flex", alignItems: "center" }}>
